@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link, useLocation } from "react-router-dom";
 
 const Nav = () => {
-  const location = useLocation();
+  //   const location = useLocation();
   return (
     <StyledNav>
       <h1>
