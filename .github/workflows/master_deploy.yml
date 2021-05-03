@@ -18,9 +18,14 @@ jobs:
       - name: Install Packges
         run: npm install
       - name: Deploy to GitHub Packges
+        shell: bash
+        env:
+          MY_EMAIL: ${{secrets.MY_EMAIL}}
+          MY_USERNAME: ${{secrets.MY_USERNAME}}
+          MY_ACCESS_TOKEN: ${{secrets.MY_ACCESS_TOKEN}}
         run: |
           echo ${{secrets.MY_EMAIL}}
-          git config --global user.email "saar.cohenn@gmail.com"
-          git config --global user.name "saarcohenn"
-          git remote set-url origin https://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@github.com/saarcohenn/saarcohenn.github.io.git
+          git config --global user.email "$MY_EMAIL"
+          git config --global user.name "$MY_USERNAME"
+          git remote set-url origin https://$MY_ACCESS_TOKEN@github.com/$MYUSERNAME/saarcohenn.github.io.git
           yarn deploy
